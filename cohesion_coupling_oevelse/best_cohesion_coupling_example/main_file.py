@@ -3,16 +3,32 @@ import time
 from neopixel_ring import NeoPixelRing
 from button import Button
 from potentiometer import Potentiometer
-
 """
-Example of code with low coupling and high cohesion
+Problemer med dette design:
 
-The code reads a potentiometer value to control brightness of a neopixel ring
+Lav cohesion:
 
-The program includes 2 pushbuttons that can be pushed to change color on neopixel ring
+Klassen AllInOne har for mange ansvarsområder
+(LED-kontrol, potentiometer-læsning, og knaphåndtering),
+hvilket gør den svær at forstå og vedligeholde.
 
-Each part of the functionality is isolated in a module with a class (High cohesion and low coupling)
-By doing this it is easier to reuse each module for other programs
+Høj coupling:
+
+Alle komponenter er tæt forbundet inden for samme klasse,
+hvilket gør det svært at ændre eller teste individuelle dele af systemet.
+
+Øvelse:
+
+koden skal omstruktureres (re-formateres).
+Det meste af koden fra eksemplet kan genbruges for at løse øvelsen, men det skal flyttes rundt.
+
+1. prøv at skabe høj cohesion ved at oprette en ny klasse til hvert ansvarsområde
+    - Navngiv hver klasse fornuftigt efter PEP8
+    - Hver klasse skal have sin egen constructor (__init__) og instantiere de objekter der
+        kræves for at den kan fungere.
+    - Lav nu et objekt for hver af klasserne, til potmeter, neopixel-ring og et til hver trykknap.
+    - Behold hver klassse i samme fil og test at koden virker
+    - Gem dette program i en mappe kalde "better_cohesion" og navngiv filen "better_cohesion_example.py"
 """
 
 def main():
